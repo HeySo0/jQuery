@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<script src="../js/jquery-3.6.1.min.js"></script>
+<script>
+
+function proc1() {
+// 	$('#result1 li:first').css('background', 'yellow');
+// 	$('#result1 li').first().css('background', 'yellow');
+// 	$('#result1 li:last').css('background', 'yellow');	
+// 	$('#result1 li').last().css('background', 'yellow');	
+	$('#result1 li:last, #result1 li:first').css('background', 'yellow');	
+	
+// 	$('#result1 li:eq(5)').css('background', 'red');
+	$('#result1 li').eq(5).css('background', 'red');
+	
+// 	$('#result1 li:lt(4)').css({'font-size':'2.0em', 'font-weight':'bold'});
+	$('#result1 li').filter(':lt(4)').css({'font-size':'2.0em', 'font-weight':'bold'});
+}
+
+function proc2() {
+// 	$('#result2 tr:even').css('background', 'lightgray');
+// 	$('#result2 tr').even().css('background', 'lightgray');
+	$('#result2 tr').filter(':even()').css('background', 'lightgray');
+	$('#result2 tr').odd().css('background', 'lightblue');
+	
+// 	$('#result2 tr:first')
+// 	$('#result2 tr').first()
+	$('#result2 tr').filter(':first').css({'background':'black', 'font-weight':'bold'});
+	$('#result2 tr:first td').css('color', 'white');
+	
+}
+
+</script>
+
+<style>
+table{
+	border: 2px solid blue;
+}
+td{
+	width : 200px;
+	height : 50px;
+	text-align : center;
+}
+</style>
+
+</head>
+<body>
+
+	<div>
+		<h3>
+		기본 필터 <br>
+		:first, :last, :eq(i), :gt(i), :lt(i), :even, :odd, :not()<br>
+		i 인덱스는 0부터 시작된다.<br>
+		권장하지 않는 필터<br>
+		메소드로 대체 : .first(), .last(), .eq(i), .not(), :even, :odd<br>
+		메소드로 대체되지 않는 필터 : :gt(i), :lt(i)
+		
+		filter() 메소드 이용 방법 : .filter(':even'), .filter(':odd'),<br>
+								    .filter(':lt(i)'), filter(':gt(i)'),<br>
+								    .filter(':first'), filter(':last'), ...<br>
+		</h3>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1">
+			<ul>
+				<li>one</li>
+				<li>two</li>
+				<li>three</li>
+				<li>four</li>
+				<li>five</li>
+				<li>six</li>
+				<li>seven</li>
+				<li>eight</li>
+				<li>nine</li>
+			</ul>
+		</div>
+	</div>
+
+	<div>
+		<h3>
+		</h3>
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2">
+			<table border = "1">
+				<tr>
+					<td>one</td>
+					<td>100만원</td>
+				</tr>
+				<tr>
+					<td>two</td>
+					<td>100만원</td>
+				</tr>
+				<tr>
+					<td>three</td>
+					<td>100만원</td>
+				</tr>
+				<tr>
+					<td>four</td>
+					<td>100만원</td>
+				</tr>
+				<tr>
+					<td>five</td>
+					<td>100만원</td>
+				</tr>
+				<tr>
+					<td>six</td>
+					<td>100만원</td>
+				</tr>
+				<tr>
+					<td>seven</td>
+					<td>100만원</td>
+				</tr>
+				<tr>
+					<td>eight</td>
+					<td>100만원</td>
+				</tr>
+				<tr>
+					<td>nine</td>
+					<td>100만원</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

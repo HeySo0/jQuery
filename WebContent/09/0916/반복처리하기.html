@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+span {
+	background-color : pink;
+}
+</style>
+
+<script src="../js/jquery-3.6.1.min.js"></script>
+
+<script>
+
+function proc1() {
+	
+// 	plist = document.getElementsByTagName('p')(dom 객체변수);
+// 	plist.each();		// 오류! (형식이 달라서)
+// 	#(plist).each();	// 사용 가능 ( dom객체변수(plist)를 $()로 감싸서 jQuery로 변환 후 사용)
+
+	str = "";
+	$('p').each(function(i){	// p개수 만큼 반복, i 사용하지 않으면 없어도 됨
+// 	$.each($('p'),function(i){
+	
+// 	plist = $('p');		// (jQuery 객체변수)
+// 	plist.each(function(i){});
+// 		str+=$('p').html();		// 이렇게하면 첫 번째 p만 더해짐
+// 		str+=$('p')[i].html();	// 오류! ([i]를 붙이면서 dom객체로 다시 변환되어 html사용불가)
+//		str += $($('p')[i]).html();	// 사용 가능! 이렇게하면 다시 jQuery
+// 		str += $('p')[i].innerHTML;	// 사용 가능!
+		str += $('p').eq(i).html()+"<br>";
+		
+	})
+	// str을 html(str), text(str)로 출력할 수 있다.
+// 	document.getElementById('result1').innerHTML = str;		// id라고 이미 표기
+//	document.querySelector('#result1').innerHTML = str;		// id인줄 모름 -> #부착!
+// 	document.getElementById('rsult2').innerText = str;		// id
+//	document.querySelector('#result2').innerText = str;		// #부착!
+	$('#result1').html(str);
+	$('#result2').text(str);
+}
+
+</script>
+
+</head>
+<body>
+
+	<div>
+		<h3>
+		반복처리 : <br>
+		 $.each(대상요소, function(v1, v2){ })<br>
+		 $(대상요소).each(function(v1, v2){ })<br>
+		매개변수 v1, v2는 생략 가능하다.<br>
+		<br>
+		$('p').html() : 첫번째 p인 요소만 태그포함하여 내용 가져오기<br>
+		p가 여러개라면 반복문을 이용하여 처리한다.<br>
+		</h3>
+			<p>1<span>홍길동</span></p>
+			<p>2<span>개나리</span></p>
+			<p>3<span>진달래</span></p>
+			<input type="button" value="확인" onclick="proc1()"> <br>
+			<br>
+			 html태그가 포함되어 있는 결과를 html(결과), text(결과)로 출력
+			<div id="result1"></div>
+			<div id="result2"></div>
+		</div>
+</body>
+</html>

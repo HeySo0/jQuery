@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+pre{
+	border-top : 5px solid pink;
+	border-bottom : 5px double gray;
+	
+	background-color : #fffce3;
+	padding : 5px;
+	margin : 3px;
+	font-size : 1.5em;
+}
+
+input[type=button], button[type=button]{
+	width : 80px;
+	height : 30px;
+	background : pink;
+	border-radius : 20px;
+	padding : 2px;
+	color : black;
+	font: 1.1em;
+}
+
+div{
+	border : 1px dotted olive;
+	heigth : auto;
+	margin : 10px;
+	padding : 20px;
+	font-size : 1.0em;
+}
+div h4 {
+	font-size : 1.0em;
+}

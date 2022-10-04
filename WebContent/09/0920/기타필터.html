@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<script src= "../js/jquery-3.6.1.min.js"></script>
+<script>
+
+$(function() {	
+	$('#hidden').on('click', function(){
+	str = "";
+		str += $('#result1 p:hidden').text();
+		alert(str);
+	})
+	
+	$('#visible').on('click', function(){
+		str = "";
+		$('#result1 p:visible').each(function(){
+			str += $(this).text() + "\n";	// alert에 찍을 땐 "\n", 그냥 화면에 출력할 땐 "<br>"
+		})
+			alert(str);
+	})
+	
+	
+	$('#fhidden').on('click', function() {
+		str= "hidden 객체 <br>";
+		$('#testForm *:hidden').each(function(){
+			// 태그 이름 비교 - input? span?
+// 			alert(this.tagName);
+// 			str+= $(this).attr('name')
+			if(this.tagName == "INPUT"){
+				str += this.tagName + " [" + $(this).attr('name') ;
+				str += " : " + $(this).val() + "]<br>";
+			}else{
+				str += this.tagName+" ["+$(this).text() + "] <br>";
+			}
+		})
+		
+		$('.hidden').html(str);
+		
+	})
+	
+	$('#fvisible').on('click', function() {
+		str = "visible 객체 <br>";
+		$('#testForm *:visible').each(function(){
+			if(this.tagName == "INPUT"){
+				vtype = $(this).attr('type');
+				if(vtype=='radio'){
+					// 선택된 radio (:checked) 체크된 상태이냐? 
+					if($(this).prop('checked')) {
+						str += "INPUT ["+$(this).attr('name') + " : " + $(this).val() + "]<br>";
+					}
+				}else{
+					str+= this.tagName + " ["+$(this).attr('name');
+					str+= ":"+ $(this).val() +"] <br>";					
+				}
+			}else if(this.tagName!="BR"){
+				str += this.tagName + " [" + $(this).text() +"]<br>";
+			}
+		})
+		$('.visible').html(str);
+	})
+	
+})
+
+</script>
+
+</head>
+<body>
+
+	<div>
+		<h3></h3>
+		<input type="button" value="hidden" id="hidden">
+		<input type="button" value="visible" id="visible">
+		
+		<div id="result1">
+			<p>보이는 문단</p>
+			<p style="visibility: hidden;">숨겨진 문단</p>
+			<p style="display: none;">자리를 차지 하지 못한 문단</p>
+			<p style="opacity: 0;">투명한 문단</p>
+
+		</div>
+	</div>
+
+	<div>
+		<h3></h3>
+		<input type="button" value="hidden" id="fhidden">
+		<input type="button" value="visible" id="fvisible">
+		
+		<div id="result2">
+			<form id="testForm"> 
+			<input type="hidden" name="userAge" value="33">
+			<input type="hidden" name="userCity" value="대전">
+			I D : 
+			<input type="text" name="userID" value="hong">  
+			<span style="display:none">ID가 중복됩니다. </span> <br>  
+			이름 : 
+			<input type="text" name="userName" value="홍길동">   
+			<span style="visibility:hidden">이름을 입력하세요</span><br>  
+			성별 : 
+			<input type="radio" name="sung" value="남" checked>남자  
+			<input type="radio" name="sung" value="여">여자  
+			</form>
+		</div>
+		
+		<div class="hidden"></div>
+		<div class="visible"></div>
+		
+	</div>
+</body>
+</html>

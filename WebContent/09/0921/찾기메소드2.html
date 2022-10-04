@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+.siblings * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+}
+</style>
+
+<!-- <script src="../js/jquery-3.6.1.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(function(){
+	$('#par').on('click', function(){
+		$('#result1 span').parent().css({'color':'red','border':'3px solid red'});
+	})
+	$('#pars').on('click', function(){
+		$('#result1 span').parents().css({'color':'blue','border':'3px dotted blue'});		
+	})
+	$('#parsS').on('click', function(){
+		$('#result1 span').parents('.siblings').css({'color':'yellow','border':'3px dashed yellow'});				
+	})
+	$('#parsU').on('click', function(){
+		$('#result1 span').parentsUntil('#result1').css({'color':'green','border':'3px dotted green'});						
+	})
+	
+	$('.findb').on('click', function(){
+// 		$(this).parent().find('span').css({'color':'green','border':'3px dotted green'});
+		$(this).parents('.siblings').find('span').css({'color':'green','border':'3px dotted green'});
+	})
+	$('.prevb').on('click', function(){
+		$(this).prev().css({'background' : 'yellow' });
+	})
+})
+</script>
+
+</head>
+<body>
+	<div>
+		<h3></h3>
+		<input type="button" value="parent" id="par">
+		<input type="button" value="parents" id="pars">
+		<input type="button" value="parents_selector" id="parsS">
+		<input type="button" value="parents_until" id="parsU">
+		<div id="result1">
+			<div class="siblings" style="width: 500px;">
+				div (great-grandparent)
+				<ul>ul (grandparent)
+					<li>li (direct parent) 
+						<span>span</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<h3></h3>
+		<div id="result2">
+			<div class="siblings" style="width: 500px;">
+				div (great-grandparent)
+				<ul>ul (grandparent)
+					<li>li (direct parent) 
+						<span>span</span>
+						<button class="prevb" type="button">확인</button>
+					</li>
+					<button class="findb" type="button">확인</button>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<h3></h3>
+		<div id="result2">
+			<div class="siblings" style="width: 500px;">
+				div (great-grandparent)
+				<ul>ul (grandparent)
+					<li>li (direct parent) 
+						<span>span</span>
+						<button class="prevb" type="button">확인</button>
+					</li>
+					<button class="findb" type="button">확인</button>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<script src ="../js/jquery-3.6.1.min.js"></script>
+<script>
+	$(function(){
+		$('#btnchange').on('click', function(){
+			namevalue = prompt("이름을 입력");
+			$('#user').val(namevalue);
+		})
+		
+		
+// 		$('#btnview').on('click', function(){
+		$('form').on('submit', function(){
+// 			alert("hello");
+			// 각 요소의 입력된 값들을 가져온다.
+			
+			str="";
+			
+			str += "이름 : " + $('#user').val() + "<br>";
+			str += `성별 : ${$('#gend').val()} <br>`;
+// 			str += `소개 : ${$('#intro').val().replace(/\r/g,"").replace(/\n/g,"<br>")} <br>`;
+// 			str += `소개 : ${$('#intro').val().replace(/\n/g,"<br>")} <br>`;
+			str += `소개 : ${$('#intro').val().replaceAll(/\n/g,"<br>")}`;
+			// 엔터(\r\n)
+			str += `직업 : ${$('#work').val()} <br>`;
+			
+			$('#result1').html(str);
+		})
+	})
+</script>
+
+</head>
+<body>
+
+	<div>
+		<h3>
+		
+		</h3>
+			<form action="test.jsp" method="post" onsubmit="return false;">
+<!-- 			onsubmit="return false;" 없으면 [버튼클릭->스크립트->jsp]진행 -->
+<!-- 			onsubmit="return false;" 있으면 [버튼클릭->스크립트] -->
+				<label for="user">이름</label> 
+				<input type="text" id="user" value="korea"><br> 
+				
+				<label>성별</label> 
+				<input type="radio" id="gend" name="gend" value="남자" checked>남자
+				<input type="radio" id="gend" name="gend" value="여자">여자<br>
+				
+				<label for="intro">소개</label><br>
+				<textarea id="intro" cols="40" rows="4"></textarea><br> 
+				
+				<label for="work">직업</label> 
+				<select id="work">
+					<option value="programmer">프로그래머</option>
+					<option value="progammer">프로게이머</option>
+					<option value="whitehand">백수</option>
+				</select><br>
+				
+<!-- 				﻿form태그 안에서 type이 생략된 button은 submit 기능을 한다. -->
+				<button id="btnview">조사하기</button>
+				<button id="btnchange">이름변경</button>
+			</form>
+
+		<div id="result1"></div>
+	</div>
+</body>
+</html>

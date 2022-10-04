@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+img{
+	width : 150px;
+	height : 150px;
+}
+</style>
+
+<script src="../js/jquery-3.6.1.min.js"></script>
+<script>
+function proc1(v){
+	// v: 클릭한 p태그의 this를 넘겨 받은 변수, 지역변수, dom변수
+	vattr = $(v).attr('title');
+	
+// 	vimg = $('<img src="../images/'+vattr+'" alt="'+vattr+'">');
+	vimg = $("<img>", {
+			'src' : '../images/' +vattr,
+			'alt' : vattr
+	});
+	
+	// 클릭한 곳에 이미지를 추가
+	$(v).append(vimg);
+}
+
+function pimgshow(){
+	// 클릭한 p태그 : this - title속성을 가져온다.
+	vtitle = $(this).attr('title');
+	
+	vimg = $("<img>", {
+			'src' : '../images/' +vtitle,
+			'alt' : vtitle
+	});
+
+// 	$(this).after(vimg);
+// 	$(this).append(vimg);
+	$(vimg).appendTo(this);
+	
+}
+
+$(function () {
+	
+	//jQuery방식의 이벤트---------------------------------------------
+	$('.jpp').on('click', function(){
+		vtitle = $(this).attr('title');
+		
+		vimg = $('<img>', {
+// 			'src' : '../images/'+vtitle,
+			'src' : `../images/${vtitle}`,
+			'alt' : vtitle
+		})
+		
+		$(this).append(vimg);
+	})
+	
+	// 이벤트 일괄등록 -----------------------------------------------
+	pplist = document.querySelectorAll('.pp');
+	for(i=0;i<pplist.length; i++){
+		pplist[i].addEventListener('click', pimgshow)
+	}
+	// ---------------------------------------------------------------
+	
+	vimg = "<img src='../images/너굴맨1.jfif' alt='너굴맨'>";
+	
+	$('#btn1').on('click', function(){
+		
+// 		$(vimg).insertAfter($('#result1'));
+		$('#result1').after(vimg);
+// 		$('#result1').append(vimg); div 박스 안에 넣고 싶으면 append써
+		
+	})
+	
+	$('#btn2').on('click', function(){
+		$('#result1').before(vimg);
+		$(vimg).insertBefore(vimg);
+	})
+})
+</script>
+
+</head>
+<body>
+
+	<div>
+		<h3>
+		대상요소의 뒤에 추가, 대상요소의 범위 바깥으로 추가<br>
+		after(자식요소)<br>
+		insertAfter(부모요소)<br>
+		<br>
+		대상요소의 앞으로 추가, 대상요소의 범위 바깥으로 추가<br>
+		before(자식요소)<br>
+		insertBefore(부모요소)<br>
+		</h3>
+		<input type="button" value="after" id="btn1">
+		<input type="button" value="before" id="btn2"><br>
+		<div id="result1"><h1>너굴맨이 해치웠으니 안심하라구</h1></div>
+	</div>
+
+	<div>
+		<h3>
+		title 속성값을 가져온다. .attr('title')<br>
+		title 속성값에 해당하는 이미지를 출력한다.<br>
+		</h3>
+		<p onclick="proc1(this)" title="너굴맨1.jfif">너굴맨이 해치웠으니 안심하라구</p>
+		<p onclick="proc1(this)" title="티거2.png">티거는 귀여워</p>
+		<p onclick="proc1(this)" title="짱구1.jpg">짱구는 맛있게 먹고있어</p>
+		<p onclick="proc1(this)" title="너굴맨1.jfif">너굴맨이 해치웠으니 안심하라구</p>
+
+		<h3>이벤트 일괄 등록</h3>
+		<p class="pp" title="너굴맨1.jfif">너굴맨이 해치웠으니 안심하라구</p>
+		<p class="pp" title="티거2.png">티거는 귀여워</p>
+		<p class="pp" title="짱구1.jpg">짱구는 맛있게 먹고있어</p>
+		<p class="pp" title="너굴맨1.jfif">너굴맨이 해치웠으니 안심하라구</p>
+
+		<h3>jQuery방식의 이벤트 일괄 등록</h3>
+		<p onclick="proc1(this)" title="너굴맨1.jfif">너굴맨이 해치웠으니 안심하라구</p>
+		<p onclick="proc1(this)" title="티거2.png">티거는 귀여워</p>
+		<p onclick="proc1(this)" title="짱구1.jpg">짱구는 맛있게 먹고있어</p>
+		<p onclick="proc1(this)" title="너굴맨1.jfif">너굴맨이 해치웠으니 안심하라구</p>
+	</div>
+</body>
+</html>

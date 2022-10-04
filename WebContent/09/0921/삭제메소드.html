@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<style>
+#result1, #result2 {
+	background : pink;
+}
+</style>
+
+<script src="../js/jquery-3.6.1.min.js"></script>
+<script>
+$(function(){
+	$('#btnre').on('click', function(){
+		$('#result1').remove();
+	})
+	
+	$('#btnemp').click(function(){
+		$('#result2').empty();
+	}) 
+})
+</script>
+
+</head>
+<body>
+
+	<div>
+		<h3></h3>
+		<input type="button" value="remove" id="btnre">
+		<input type="button" value="empty" id="btnemp">
+		<div id="result1">
+			<p>너굴맨이 쟁취했으니 한심하라구</p>
+		</div>
+		<div id="result2">
+			<p>너굴맨이 쟁취했으니 한심하라구</p>
+		</div>
+	</div>
+</body>
+</html>

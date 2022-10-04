@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<script src="../js/jquery-3.6.1.min.js"></script>
+<script>
+
+$(function() {
+	$('p').on('click', function(){
+		if($(this).parent().is('.result1')){
+			//p태그를 복사 붙여넣기를 하고 복사본의 글자색을 빨강으로 변경
+// 			$(this).clone().appendTo($(this).parent()).css('color','red');
+			$(this).clone(true).appendTo($(this).parent()).css('color','red');// 이벤트도 같이 복사
+		}else{
+			alert("작업대상이 아닙니다.")
+		}
+	})
+})
+
+</script>
+
+</head>
+<body>
+
+	<div>
+		<h3></h3>
+		<div class="result1">
+			<p>짱구는 못말려</p>
+		</div>
+		<p>와카코와 술</p>
+		<div class="result1">
+			<p>나의 히어로 아카데미</p>
+		</div>
+	</div>
+</body>
+</html>
